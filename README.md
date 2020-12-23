@@ -6,9 +6,17 @@
 
 Habit is an app where a user can get, add, edit, and delete a habit or many habits, this is useful because some people have bad habits that they want to track, or good habits that they want to make sure they have done at a selected time.
 
-## ERD Model:
+## Schema:
 
-![ERD Model](https://i.imgur.com/2bazzcc.png)
+```
+HABIT: {
+  name: String,
+  selectedDate: Date, // date when should be Checked
+	actualDate: Date, // date when checked
+  checked: Boolean,
+
+}
+```
 
 ## MVP
 
