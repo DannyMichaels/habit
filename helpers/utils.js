@@ -1,11 +1,14 @@
 /* UTILITY */
 // when you return a function inside a function it's called a "closure".
+
+// way 1
 // function idMaker() {
 //   return function () {
 //     return Math.ceil(Math.random() * 100);
 //   };
 // }
 
+// way 2
 const idMaker = () => () => Math.ceil(Math.random() * 100);
 
 let generateHabitId = idMaker();
