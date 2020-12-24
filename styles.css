@@ -1,52 +1,54 @@
 /* reset ^ added */
-
 .habit-list {
   list-style: none;
   margin: 0;
   padding: 0;
   border: 2px solid green;
 }
-// you cannot do put block level elements inside of an inline level element
+
 habit-card {
-  display: block; // custom-element are 'inline' by default (as of this date)
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px;
   border: 1px solid red;
   /* */
   position: relative;
-  * {
-    border: 1px solid blue;
-  }
-  .checkbox {
-    display: block;
-    padding: 20px;
-  }
-  .checkboxxxxx {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
 }
 
-.habit {
-  &.checked {
-    habit-card {
-      background-color: gray;
-    }
-  }
+habit-card * {
+  border: 1px solid blue;
+}
+
+habit-card .checkbox {
+  display: block;
+  padding: 20px;
+}
+
+habit-card .checkboxxxxx {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .habit.checked habit-card {
-  // do this
+  background-color: gray;
 }
 
 form {
   padding: 20px;
 }
+/*# sourceMappingURL=styles.css.map */

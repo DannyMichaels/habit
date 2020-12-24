@@ -147,23 +147,25 @@ function renderHabit(habit) {
 	`;
 }
 
-let renderHabits = function renderHabits() {
+const renderHabits = () => {
   $habitList.innerHTML = state.habits
-    .map(function (h) {
+    .map((h) => {
       return renderHabit(h);
     })
     .join("");
 };
 
+// WAY 1: items.map(function (item) {});
+// WAY 2: items.map((item) => {});
+
 /* EVENT DELEGATION */
-document.addEventListener("click", function (event) {
+document.addEventListener("click", (event) => {
   if (event.target.matches("input.checkbox")) {
     let clicked = event.target.closest("li").dataset.id;
     console.log(clicked);
     toggleHabit(clicked);
   }
 
-  ///////
   if (event.target.matches("#delete-all-habits")) {
     clearHabits();
   }
@@ -178,7 +180,7 @@ document.addEventListener("click", function (event) {
 const $form = document.querySelector('[rel="form"]');
 const $input = $form.querySelector("input");
 
-$form.addEventListener("submit", function (event) {
+$form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if ($input.value.length) {
