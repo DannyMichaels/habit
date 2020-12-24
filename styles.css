@@ -1,4 +1,3 @@
-/* reset ^ added */
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,14 +14,21 @@ main {
           align-items: center;
 }
 
-.habit-list {
+main .welcome h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(22px, 10vw, 80px);
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp() */
+  color: black;
+}
+
+main .habit-list {
   list-style: none;
   margin: 0;
   padding: 0;
   border: 2px solid green;
 }
 
-habit-card {
+main habit-card {
   display: block;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,29 +46,29 @@ habit-card {
   position: relative;
 }
 
-habit-card * {
+main habit-card * {
   border: 1px solid blue;
 }
 
-habit-card .checkbox {
+main habit-card .checkbox {
   display: block;
   padding: 20px;
   cursor: pointer;
 }
 
-.habit.checked habit-card {
+main .habit.checked habit-card {
   background-color: gray;
 }
 
-form {
+main form {
   padding: 20px;
 }
 
-main button.inactive {
+main main button.inactive {
   display: none;
 }
 
-main button.active {
+main main button.active {
   display: block;
 }
 /*# sourceMappingURL=styles.css.map */

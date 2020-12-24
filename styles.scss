@@ -1,59 +1,73 @@
-/* reset ^ added */
+$primary-color: black;
+$base-font: "Montserrat", sans-serif;
+
+@mixin loud-voice {
+  font-family: $base-font;
+  font-size: clamp(22px, 10vw, 80px);
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp() */
+  color: $primary-color;
+}
 
 main {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-.habit-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border: 2px solid green;
-}
-// you cannot do put block level elements inside of an inline level element
-habit-card {
-  display: block; // custom-element are 'inline' by default (as of this date)
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid red;
-  /* */
-  position: relative;
-  * {
-    border: 1px solid blue;
-  }
-  .checkbox {
-    display: block;
-    padding: 20px;
-    cursor: pointer;
-  }
-}
 
-.habit {
-  &.checked {
-    habit-card {
-      background-color: gray;
+  .welcome {
+    h1 {
+      @include loud-voice();
     }
   }
-}
-
-.habit.checked habit-card {
-  // do this
-}
-
-form {
-  padding: 20px;
-}
-
-main {
-  button.inactive {
-    display: none;
+  .habit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 2px solid green;
+  }
+  // you cannot do put block level elements inside of an inline level element
+  habit-card {
+    display: block; // custom-element are 'inline' by default (as of this date)
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid red;
+    /* */
+    position: relative;
+    * {
+      border: 1px solid blue;
+    }
+    .checkbox {
+      display: block;
+      padding: 20px;
+      cursor: pointer;
+    }
   }
 
-  button.active {
-    display: block;
+  .habit {
+    &.checked {
+      habit-card {
+        background-color: gray;
+      }
+    }
+  }
+
+  .habit.checked habit-card {
+    // do this
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  main {
+    button.inactive {
+      display: none;
+    }
+
+    button.active {
+      display: block;
+    }
   }
 }
