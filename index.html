@@ -11,8 +11,14 @@
   
 </head>
 <body>
-  
-  <form rel='form'>
+  <main>
+    <section className="welcome">
+      <h1>Habit</h1>
+    </section>
+
+<section className="habits">
+
+    <form rel='form'>
     <label for='name'>name</label>
     <input id='name' placeholder='Wake up!'>
     
@@ -24,12 +30,16 @@
     <!-- here! -->
   </ol>
   
-  <button id="delete-all-habits">DELETE US :(</button>
+  <button rel='delete-all' id="delete-all-habits">DELETE US :(</button>
+</section>
+</main>
 
 
-  <script  src='./script.js'></script>
+<script defer src='/helpers/database.js'></script>
+<script defer src='./script.js'></script>
+  <script  src='/helpers/render.js'></script>
   <script  src='/helpers/habit.js'></script>
-  <script  src='/helpers/database.js'></script>
-
+  <script  src='/helpers/utils.js'></script>
+  <script  src='/helpers/actions.js'></script>
 </body>
 </html>
