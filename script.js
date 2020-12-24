@@ -12,13 +12,13 @@ const $habitList = document.querySelector('[rel="habit-outlet"]');
 
 /* UTILITY */
 function idMaker() {
-  var counter = 1;
-  // var country = habbitsArray.length ?
+  let counter = 1;
+  // let country = habbitsArray.length ?
   return function () {
     return counter++;
   };
 }
-var generateHabitId = idMaker();
+let generateHabitId = idMaker();
 // REALLY... we'd use a real UID type thing...
 const toSnakeCase = (str) =>
   str &&
@@ -84,7 +84,7 @@ function getHabit(id) {
 }
 
 function clearHabits() {
-  var answer = confirm("Are you sure?");
+  let answer = confirm("Are you sure?");
   if (answer == true) {
     state.habits = [];
     saveAll();
@@ -108,7 +108,7 @@ function toggleHabit(id) {
 }
 
 function removeHabit(id) {
-  var allButThisOne = getHabits(state).filter(function (habit) {
+  let allButThisOne = getHabits(state).filter(function (habit) {
     return habit.id !== id;
   });
   state.habits = allButThisOne;
@@ -147,7 +147,7 @@ function renderHabit(habit) {
 	`;
 }
 
-var renderHabits = function renderHabits() {
+let renderHabits = function renderHabits() {
   $habitList.innerHTML = state.habits
     .map(function (h) {
       return renderHabit(h);
@@ -158,7 +158,7 @@ var renderHabits = function renderHabits() {
 /* EVENT DELEGATION */
 document.addEventListener("click", function (event) {
   if (event.target.matches("input.checkbox")) {
-    var clicked = event.target.closest("li").dataset.id;
+    let clicked = event.target.closest("li").dataset.id;
     console.log(clicked);
     toggleHabit(clicked);
   }
@@ -168,7 +168,7 @@ document.addEventListener("click", function (event) {
     clearHabits();
   }
   if (event.target.matches("#delete-this-habit")) {
-    var id = event.target.closest("li").dataset.id;
+    let id = event.target.closest("li").dataset.id;
     console.log("noo you deleted me :(", id);
     removeHabit(id);
   }
@@ -234,10 +234,9 @@ function ConstructThing(name) {
 	this.checked = false;
 	this.date = new Date();
 }
-var exampleThing = new ConstructThing("Use a constructor function");
+let exampleThing = new ConstructThing("Use a constructor function");
 console.log(exampleThing);
 // -------- "Constuctor function"
 
 
 */
-s;
