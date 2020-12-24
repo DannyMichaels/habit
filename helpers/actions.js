@@ -3,14 +3,14 @@ function logState() {
   console.log("State: ", state);
 }
 
-function addHabit(name) {
+function addHabit(formData) {
   // $todo -> Make sure there are no duplicates?
 
-  if (!name) {
+  if (!formData) {
     console.log("No name added / return");
     return;
   }
-  state.habits.push(new Habit(name));
+  state.habits.push(new Habit(formData));
   logState();
   renderHabits();
   saveAll();
@@ -63,7 +63,7 @@ function editHabit(id) {
 
 function deleteHabitButton(yes) {
   if (yes) {
-    return "<button id='delete-this-habit'>DELETE ME :I</button>";
+    return "<button id='delete-this-habit'><i class='fa fa-close'></i> Delete</button>";
   } else {
     return "";
   }
