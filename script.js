@@ -8,96 +8,9 @@ const state = {
 };
 
 /* DOM */
-const habitList = document.querySelector('[rel="habit-outlet"]');
+const select = (element) => document.querySelector(element);
 
-// ACTIONS
-function logState() {
-  console.log("State: ", state);
-}
-
-function addHabit(name) {
-  // $todo -> Make sure there are no duplicates?
-
-  if (!name) {
-    console.log("No name added / return");
-    return;
-  }
-  state.habits.push(new Habit(name));
-  logState();
-  renderHabits();
-  saveAll();
-}
-
-function getHabits() {
-  return state.habits;
-}
-
-function getHabit(id) {
-  return getHabits(state).find(function (habit) {
-    return habit.id == id;
-  });
-}
-
-function clearHabits() {
-  let answer = confirm("Are you sure?");
-  if (answer == true) {
-    state.habits = [];
-    saveAll();
-    renderHabits();
-  }
-}
-
-function toggleHabit(id) {
-  getHabits().map((habit) => {
-    if (habit.id == id) {
-      return (habit.checked = !habit.checked);
-    }
-    return habit;
-  });
-  logState();
-  renderHabits();
-  saveAll();
-}
-
-function removeHabit(id) {
-  let allButThisOne = getHabits(state).filter(function (habit) {
-    return habit.id !== id;
-  });
-  state.habits = allButThisOne;
-  logState();
-  renderHabits();
-  saveAll();
-}
-
-function editHabit(id) {
-  // $todo
-}
-
-function deleteHabitButton(yes) {
-  if (yes) {
-    return "<button id='delete-this-habit'>DELETE ME :I</button>";
-  } else {
-    return "";
-  }
-}
-
-/* RENDER */
-function renderHabit(habit) {
-  return `
-		<li class='habit ${habit.checked ? "checked" : ""}' data-id='${habit.id}'>
-			<habit-card>
-				<input class='checkbox' type='checkbox' ${habit.checked ? "checked" : ""}>
-				<h1 class='name'>${habit.name}</h1>&nbsp; ${deleteHabitButton(habit.checked)}
-			</habit-card>
-		</li>
-	`;
-}
-
-const renderHabits = () =>
-  (habitList.innerHTML = state.habits.map((habit) => renderHabit(habit)));
-
-// WAY 1: items.map(function (item) {});
-// WAY 2: items.map((item) => {});
+const habitList = select('[rel="habit-outlet"]');
 
 /* EVENT DELEGATION */
 document.addEventListener("click", (event) => {
@@ -117,8 +30,19 @@ document.addEventListener("click", (event) => {
   }
 });
 
-const form = document.querySelector('[rel="form"]');
+const form = select('[rel="form"]');
 const input = form.querySelector("input");
+
+function getDeleteButton() {
+  const deleteAllButton = select('[rel="delete-all"]');
+  if (getHabits().length > 0) {
+    deleteAllButton.classList.toggle("active");
+  } else {
+    deleteAllButton.classList.toggle("inactive");
+  }
+}
+
+getDeleteButton();
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
