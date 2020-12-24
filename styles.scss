@@ -1,5 +1,6 @@
 $primary-color: black;
 $base-font: "Montserrat", sans-serif;
+$eggshell: #f5ede1;
 
 @mixin loud-voice {
   font-family: $base-font;
@@ -8,12 +9,36 @@ $base-font: "Montserrat", sans-serif;
   color: $primary-color;
 }
 
+@mixin attention-voice {
+  font-family: $base-font;
+  font-size: clamp(19px, 10vw, 40px);
+  color: $primary-color;
+}
+
+@mixin calm-voice {
+  font-family: $base-font;
+  font-size: 16px;
+  color: $primary-color;
+}
+
+@mixin delete-button {
+  button {
+    background: red;
+  }
+}
+
+@mixin random-bgr() {
+  background: rgb(random(255), random(255), random(255));
+}
+
+body {
+  background: $eggshell;
+}
 main {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
   .welcome {
     h1 {
       @include loud-voice();
@@ -23,20 +48,28 @@ main {
     list-style: none;
     margin: 0;
     padding: 0;
-    border: 2px solid green;
+    // border: 2px solid green;
   }
-  // you cannot do put block level elements inside of an inline level element
+
   habit-card {
-    display: block; // custom-element are 'inline' by default (as of this date)
+    display: block;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px;
-    border: 1px solid red;
+    margin: 10px;
+    box-shadow: 2px 2px 2px 2px peachpuff;
+    border-radius: 4px;
+    background: white;
     /* */
+    @include delete-button();
     position: relative;
-    * {
-      border: 1px solid blue;
+    // * {
+    //   border: 1px solid blue;
+    // }
+    .name {
+      @include calm-voice();
+      padding: 10px;
     }
     .checkbox {
       display: block;

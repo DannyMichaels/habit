@@ -14,7 +14,9 @@ function renderHabit(habit) {
 }
 
 const renderHabits = () => {
-  habitList.innerHTML = state.habits.map((habit) => renderHabit(habit));
+  habitList.innerHTML = state.habits
+    .map((habit) => renderHabit(habit))
+    .join("");
 };
 
 // WAY 1: items.map(function (item) {});
