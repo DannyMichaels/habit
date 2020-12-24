@@ -10,22 +10,6 @@ const state = {
 /* DOM */
 const habitList = document.querySelector('[rel="habit-outlet"]');
 
-/* UTILITY */
-// when you return a function inside a function it's called a "closure".
-function idMaker() {
-  return function () {
-    return Math.ceil(Math.random() * 100);
-  };
-}
-let generateHabitId = idMaker();
-// REALLY... we'd use a real UID type thing...
-const toSnakeCase = (str) =>
-  str &&
-  str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map((x) => x.toLowerCase())
-    .join("_");
-
 // ACTIONS
 function logState() {
   console.log("State: ", state);
@@ -64,7 +48,6 @@ function clearHabits() {
 }
 
 function toggleHabit(id) {
-  //getHabits returns state.habits inside it
   getHabits().map((habit) => {
     if (habit.id == id) {
       return (habit.checked = !habit.checked);
@@ -90,14 +73,6 @@ function editHabit(id) {
   // $todo
 }
 
-function seedApp() {
-  /* basically  "SEED DATA" */
-  addHabit("Do morning situps");
-
-  addHabit("Do morning situps AGAIN");
-  toggleHabit(2);
-}
-
 function deleteHabitButton(yes) {
   if (yes) {
     return "<button id='delete-this-habit'>DELETE ME :I</button>";
@@ -118,11 +93,8 @@ function renderHabit(habit) {
 	`;
 }
 
-const renderHabits = () => {
-  habitList.innerHTML = state.habits.map((h) => {
-    return renderHabit(h);
-  });
-};
+const renderHabits = () =>
+  (habitList.innerHTML = state.habits.map((habit) => renderHabit(habit)));
 
 // WAY 1: items.map(function (item) {});
 // WAY 2: items.map((item) => {});
@@ -145,69 +117,17 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// some dom stuff... that you'll reuse...
-const $form = document.querySelector('[rel="form"]');
-const $input = $form.querySelector("input");
+const form = document.querySelector('[rel="form"]');
+const input = form.querySelector("input");
 
-$form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if ($input.value.length) {
-    addHabit($input.value);
-    $input.value = "";
+  if (input.value.length) {
+    addHabit(input.value);
+    input.value = "";
   }
 });
 
 /* run the program */
 initializeApp();
-
-/* tests */
-// you could also write your own tests
-
-/*
-
-The goal: Build out the whole thing - fully functional / with NO UI (first)
-
-1. Many of these things - need to get handled automatically: the "ID" should be generated somehow... (you'll need it - to remove habits etc)
-
-2. there are a few ways to "construct" an object.... a "constructor" function / is common - and also the new "Class" in JS is good too... --- so, decide how to do that - and then the 'date' should get added... and the ID 
-
-3. how do you remove a habit from the habits array? based on the ID? because - you aren't clicking anything.....
-
-
-*/
-
-/*
-
-// find(habit).splice from array
-(maybe)  BUT - do the things - in order of importance. (that's the most importnat thing to know about --- managing the time / and the level of importance)
-
-
-
-OTHER WAYS THAN CLASS!
-
-// way 1
-function createHabit(name) { // what is needed? explicitly?
-	// What would you say to Alexa?
-	// he would input the name of the habit,
-	return {
-		id: state.lastId++, // for now?
-		name: name,
-		checked: false,
-		date: new Date(),
-	}; // this would return an object... / that's ONE way... 
-} // "Function that returns an object"
-
-// way 2
-function ConstructThing(name) {
-	this.id = state.lastId++;
-	this.name = name;
-	this.checked = false;
-	this.date = new Date();
-}
-let exampleThing = new ConstructThing("Use a constructor function");
-console.log(exampleThing);
-// -------- "Constuctor function"
-
-
-*/
