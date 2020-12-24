@@ -132,6 +132,8 @@ function seedApp() {
 function deleteHabitButton(yes) {
   if (yes) {
     return "<button id='delete-this-habit'>DELETE ME :I</button>";
+  } else {
+    return "";
   }
 }
 
