@@ -8,22 +8,28 @@
 	<title>Habit</title>
   <link rel="stylesheet" href="./styles.css">
 
-  <script defer src='./script.js'></script>
+  
 </head>
 <body>
+  
+  <form rel='form'>
+    <label for='name'>name</label>
+    <input id='name' placeholder='Wake up!'>
+    
+    <button type='submit'>Submit</button>
+  </form>
+  
+  
+  <ol class='habit-list' rel='habit-outlet'>
+    <!-- here! -->
+  </ol>
+  
+  <button id="delete-all-habits">DELETE US :(</button>
 
-<form rel='form'>
-	<label for='name'>name</label>
-	<input id='name' placeholder='Wake up!'>
-	
-	<button type='submit'>Submit</button>
-</form>
 
+  <script  src='./script.js'></script>
+  <script  src='/helpers/habit.js'></script>
+  <script  src='/helpers/database.js'></script>
 
-<ol class='habit-list' rel='habit-outlet'>
-	<!-- here! -->
-</ol>
-
-<button id="delete-all-habits">DELETE US :(</button>
 </body>
 </html>

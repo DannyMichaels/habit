@@ -8,14 +8,13 @@ const state = {
 };
 
 /* DOM */
-const $habitList = document.querySelector('[rel="habit-outlet"]');
+const habitList = document.querySelector('[rel="habit-outlet"]');
 
 /* UTILITY */
+// when you return a function inside a function it's called a "closure".
 function idMaker() {
-  let counter = 1;
-  // let country = habbitsArray.length ?
   return function () {
-    return counter++;
+    return Math.ceil(Math.random() * 100);
   };
 }
 let generateHabitId = idMaker();
@@ -26,34 +25,6 @@ const toSnakeCase = (str) =>
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
     .map((x) => x.toLowerCase())
     .join("_");
-
-/* RESOURCES */
-class Habit {
-  constructor(name) {
-    this.name = name;
-    this.id = toSnakeCase(this.name); // slug-style-id  "kabob case" ? or whatevers...
-    this.checked = false;
-    this.date = new Date();
-  }
-  toggle() {
-    this.checked = !this.checked;
-  }
-}
-
-// DATABASE (backend)
-function initializeApp() {
-  if (true) {
-    state.habits = JSON.parse(localStorage.getItem("habits"));
-  } else {
-    state.habits = [];
-  }
-  renderHabits(); // initial render
-}
-
-function saveAll() {
-  // https://www.w3schools.com/jsref/met_storage_setitem.asp
-  localStorage.setItem("habits", JSON.stringify(state.habits));
-}
 
 // ACTIONS
 function logState() {
@@ -94,14 +65,12 @@ function clearHabits() {
 
 function toggleHabit(id) {
   //getHabits returns state.habits inside it
-  getHabits()
-    .map(function (habit) {
-      if (habit.id == id) {
-        return (habit.checked = !habit.checked);
-      }
-      return habit;
-    })
-    .join("");
+  getHabits().map((habit) => {
+    if (habit.id == id) {
+      return (habit.checked = !habit.checked);
+    }
+    return habit;
+  });
   logState();
   renderHabits();
   saveAll();
@@ -150,11 +119,9 @@ function renderHabit(habit) {
 }
 
 const renderHabits = () => {
-  $habitList.innerHTML = state.habits
-    .map((h) => {
-      return renderHabit(h);
-    })
-    .join("");
+  habitList.innerHTML = state.habits.map((h) => {
+    return renderHabit(h);
+  });
 };
 
 // WAY 1: items.map(function (item) {});
