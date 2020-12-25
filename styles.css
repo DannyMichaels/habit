@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
   background: #f5ede1;
 }
@@ -18,22 +25,23 @@ main {
           align-items: center;
 }
 
-main button {
+button {
   cursor: pointer;
 }
 
-main section.welcome {
+section.welcome {
   text-align: center;
+  margin-bottom: -50px;
 }
 
-main section.welcome h1 {
+section.welcome h1 {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(22px, 10vw, 80px);
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp() */
   color: black;
 }
 
-main section.home {
+section.home {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -47,9 +55,27 @@ main section.home {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 20px;
 }
 
-main #delete-all-habits {
+section.habits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 50px;
+}
+
+#delete-all-habits {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -58,13 +84,14 @@ main #delete-all-habits {
   cursor: pointer;
 }
 
-main .habit-list {
+.habit-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
-main habit-card {
+habit-card {
   display: block;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -87,7 +114,7 @@ main habit-card {
   position: relative;
 }
 
-main habit-card button {
+habit-card button {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -97,21 +124,21 @@ main habit-card button {
   background: red;
 }
 
-main habit-card .name {
+habit-card .name {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   color: black;
   padding: 10px;
 }
 
-main habit-card .checkbox {
+habit-card .checkbox {
   display: block;
   padding: 20px;
   cursor: pointer;
 }
 
 @media (min-width: 500px) {
-  main habit-card {
+  habit-card {
     width: 70%;
     min-width: 400px;
     max-width: 500px;
@@ -119,20 +146,29 @@ main habit-card .checkbox {
 }
 
 @media (min-width: 1200px) {
-  main habit-card {
+  habit-card {
     width: 400px;
   }
 }
 
-main .habit.checked habit-card {
+.habit.checked habit-card {
   background-color: gray;
 }
 
-main form {
-  padding: 20px;
+form {
+  padding-top: 25px;
+  padding-bottom: 5px;
 }
 
-main form button {
+form input {
+  padding: 12px;
+  margin-right: 10px;
+  outline: none;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+form button {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -141,19 +177,19 @@ main form button {
   cursor: pointer;
 }
 
-main form button.active {
+form button.active {
   pointer-events: auto;
 }
 
-main form button.inactive {
+form button.inactive {
   pointer-events: none;
 }
 
-main main button.inactive {
+main button.inactive {
   display: none;
 }
 
-main main button.active {
+main button.active {
   display: block;
 }
 /*# sourceMappingURL=styles.css.map */
