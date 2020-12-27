@@ -173,3 +173,11 @@ main {
     display: block;
   }
 }
+
+.edit-text.inactive {
+  display: none;
+}
+
+.edit-text {
+  display: block;
+}

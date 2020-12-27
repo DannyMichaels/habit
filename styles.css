@@ -192,4 +192,12 @@ main button.inactive {
 main button.active {
   display: block;
 }
+
+.edit-text.inactive {
+  display: none;
+}
+
+.edit-text {
+  display: block;
+}
 /*# sourceMappingURL=styles.css.map */
