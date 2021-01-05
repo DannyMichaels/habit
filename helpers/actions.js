@@ -58,7 +58,6 @@ function removeHabit(id) {
 }
 
 function editHabit(id) {
-  // $todo
   let habitToEdit = getHabits(state).find((habit) => habit.id === id);
   if (habitToEdit) {
     const inputElement = document.getElementById(`edit-input-field-${id}`);
