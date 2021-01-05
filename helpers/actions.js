@@ -61,6 +61,8 @@ function editHabit(id) {
   let habitToEdit = getHabits(state).find((habit) => habit.id === id);
   if (habitToEdit) {
     const inputElement = document.getElementById(`edit-input-field-${id}`);
+    const cancelButton = document.getElementById(`cancel-edit-${id}`);
+    cancelButton.classList.remove("inactive");
     inputElement.classList.remove("inactive");
     inputElement.value = habitToEdit.name;
   }
