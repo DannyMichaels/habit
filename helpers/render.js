@@ -13,10 +13,16 @@ function renderHabit(habit) {
 
         <h1 class='name' id="habit-name-${habit.id}">${
     habit.name
-  }</h1>&nbsp;${deleteHabitButton(habit.checked)}
-  <button onclick="editHabit('${habit.id}')">Edit</button>
+  }</h1>&nbsp;${deleteHabitButton(habit.checked)} 
+      <button onclick="editHabit('${habit.id}')">Edit</button>
+  
   <button onclick="saveHabit('${habit.id}')">Save</button>
-  <button onclick="cancelEdit('${habit.id}')">Cancel</button>
+
+    <button class="cancel-button inactive" id="cancel-edit-${
+      habit.id
+    }" onclick="cancelEdit('${habit.id}')">Cancel</button>
+    
+ 
 
         <!-- <h1 class='date'>${habit.date}</h1>&nbsp -->
 			</habit-card>
