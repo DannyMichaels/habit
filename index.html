@@ -7,39 +7,47 @@
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 	<title>Habit</title>
   <link rel="stylesheet" href="./styles.css">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 </head>
 <body>
   <main>
-    <section className="welcome">
+    <section class="welcome">
       <h1>Habit</h1>
     </section>
-
-<section className="habits">
-
-    <form rel='form'>
-    <label for='name'>name</label>
-    <input id='name' placeholder='Wake up!'>
     
-    <button type='submit'>Submit</button>
-  </form>
-  
-  
-  <ol class='habit-list' rel='habit-outlet'>
-    <!-- here! -->
-  </ol>
-  
-  <button rel='delete-all' id="delete-all-habits">DELETE US :(</button>
-</section>
-</main>
+    
+    <section class="home form">
+      <form rel='form'>
+        <label for='name'>name</label>
+        <input id='name' placeholder='Wake up!'>
+        <!-- <label for='good'>good habit</label>
+          <input id='good' type="radio" placeholder='good'>
+          <label for='good'>bad habit</label>
+          <input id='bad' type="radio" placeholder='bad'> -->
+          
+          <button type='submit'>Submit</button>
+        </form>
+      </section>
+        
+      <section class="habits">
 
-
-<script defer src='/helpers/database.js'></script>
-<script defer src='./script.js'></script>
-  <script  src='/helpers/render.js'></script>
-  <script  src='/helpers/habit.js'></script>
-  <script  src='/helpers/utils.js'></script>
-  <script  src='/helpers/actions.js'></script>
-</body>
-</html>
+        <ol class='habit-list' rel='habit-outlet'>
+          <!-- here! -->
+        </ol>
+        
+        <button rel='delete-all' id="delete-all-habits" class="delete-all-btn" > <i class="fa fa-trash"></i> Delete All</button>
+      </section class="habits">
+    </main>
+    
+    
+    <script defer src='/helpers/database.js'></script>
+    <script defer src='./script.js'></script>
+    <script  src='/helpers/render.js'></script>
+    <script  src='/helpers/habit.js'></script>
+    <script  src='/helpers/utils.js'></script>
+    <script  src='/helpers/actions.js'></script>
+  </body>
+  </html>

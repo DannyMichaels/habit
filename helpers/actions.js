@@ -3,14 +3,14 @@ function logState() {
   console.log("State: ", state);
 }
 
-function addHabit(name) {
+function addHabit(formData) {
   // $todo -> Make sure there are no duplicates?
 
-  if (!name) {
+  if (!formData) {
     console.log("No name added / return");
     return;
   }
-  state.habits.push(new Habit(name));
+  state.habits.push(new Habit(formData));
   logState();
   renderHabits();
   saveAll();
@@ -59,11 +59,41 @@ function removeHabit(id) {
 
 function editHabit(id) {
   // $todo
+  let habitToEdit = getHabits(state).find((habit) => habit.id === id);
+  if (habitToEdit) {
+    const inputElement = document.getElementById(`edit-input-field-${id}`);
+    inputElement.classList.remove("inactive");
+    inputElement.value = habitToEdit.name;
+  }
+}
+
+function saveHabit(id) {
+  let editedHabitIndex = getHabits(state).findIndex((habit) => habit.id === id);
+  if (editedHabitIndex > -1) {
+    const nameElement = document.getElementById(`habit-name-${id}`);
+    const inputElement = document.getElementById(`edit-input-field-${id}`);
+    if (inputElement.value) {
+      const updatedHabit = {
+        ...state.habits[editedHabitIndex],
+        name: inputElement.value,
+      };
+      state.habits.splice(editedHabitIndex, 1, updatedHabit);
+      nameElement.innerText = updatedHabit.name;
+      saveAll();
+    }
+    inputElement.classList.add("inactive");
+  }
+}
+
+function cancelEdit(id) {
+  const inputElement = document.getElementById(`edit-input-field-${id}`);
+  inputElement.value = "";
+  inputElement.classList.add("inactive");
 }
 
 function deleteHabitButton(yes) {
   if (yes) {
-    return "<button id='delete-this-habit'>DELETE ME :I</button>";
+    return "<button id='delete-this-habit'><i class='fa fa-close'></i> Delete</button>";
   } else {
     return "";
   }

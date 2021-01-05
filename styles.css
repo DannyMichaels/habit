@@ -1,4 +1,14 @@
-/* reset ^ added */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #f5ede1;
+}
+
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,11 +25,70 @@ main {
           align-items: center;
 }
 
+button {
+  cursor: pointer;
+}
+
+section.welcome {
+  text-align: center;
+  margin-bottom: -50px;
+}
+
+section.welcome h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(22px, 10vw, 80px);
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp() */
+  color: black;
+}
+
+section.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 20px;
+}
+
+section.habits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 50px;
+}
+
+#delete-all-habits {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .habit-list {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border: 2px solid green;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 habit-card {
@@ -35,13 +104,31 @@ habit-card {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
-  border: 1px solid red;
+  margin: 20px;
+  -webkit-box-shadow: 2px 2px 2px 2px peachpuff;
+          box-shadow: 2px 2px 2px 2px peachpuff;
+  border-radius: 4px;
+  background: white;
+  width: 70vw;
   /* */
   position: relative;
 }
 
-habit-card * {
-  border: 1px solid blue;
+habit-card button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background: red;
+}
+
+habit-card .name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: black;
+  padding: 10px;
 }
 
 habit-card .checkbox {
@@ -50,12 +137,52 @@ habit-card .checkbox {
   cursor: pointer;
 }
 
+@media (min-width: 500px) {
+  habit-card {
+    width: 70%;
+    min-width: 400px;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1200px) {
+  habit-card {
+    width: 400px;
+  }
+}
+
 .habit.checked habit-card {
   background-color: gray;
 }
 
 form {
-  padding: 20px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+
+form input {
+  padding: 12px;
+  margin-right: 10px;
+  outline: none;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button.active {
+  pointer-events: auto;
+}
+
+form button.inactive {
+  pointer-events: none;
 }
 
 main button.inactive {
@@ -63,6 +190,14 @@ main button.inactive {
 }
 
 main button.active {
+  display: block;
+}
+
+.edit-text.inactive {
+  display: none;
+}
+
+.edit-text {
   display: block;
 }
 /*# sourceMappingURL=styles.css.map */

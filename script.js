@@ -32,17 +32,24 @@ document.addEventListener("click", (event) => {
 
 const form = select('[rel="form"]');
 const input = form.querySelector("input");
+const submitButton = form.querySelector("button");
 
-function getDeleteButton() {
-  const deleteAllButton = select('[rel="delete-all"]');
-  if (getHabits().length > 0) {
-    deleteAllButton.classList.toggle("active");
-  } else {
-    deleteAllButton.classList.toggle("inactive");
-  }
-}
+// function getDeleteButton() {
+//   const deleteAllButton = select('[rel="delete-all"]');
+//   if (getHabits().length > 0) {
+//     deleteAllButton.classList.toggle("active");
+//   } else {
+//     deleteAllButton.classList.toggle("inactive");
+//   }
+// }
 
-getDeleteButton();
+// getDeleteButton();
+
+// if (input.value.length) {
+//   submitButton.classList.toggle("active");
+// } else {
+//   submitButton.classList.toggle("inactive");
+// }
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();

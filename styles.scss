@@ -1,4 +1,55 @@
-/* reset ^ added */
+$primary-color: black;
+$base-font: "Montserrat", sans-serif;
+$eggshell: #f5ede1;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@mixin button-1 {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@mixin loud-voice {
+  font-family: $base-font;
+  font-size: clamp(22px, 10vw, 80px);
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/clamp() */
+  color: $primary-color;
+}
+
+@mixin attention-voice {
+  font-family: $base-font;
+  font-size: clamp(19px, 10vw, 40px);
+  color: $primary-color;
+}
+
+@mixin calm-voice {
+  font-family: $base-font;
+  font-size: 16px;
+  color: $primary-color;
+}
+
+@mixin delete-button {
+  button {
+    @include button-1();
+    background: red;
+  }
+}
+
+@mixin random-bgr() {
+  background: rgb(random(255), random(255), random(255));
+}
+
+body {
+  background: $eggshell;
+}
 
 main {
   display: flex;
@@ -6,29 +57,77 @@ main {
   flex-direction: column;
   align-items: center;
 }
+button {
+  cursor: pointer;
+}
+section.welcome {
+  text-align: center;
+  margin-bottom: -50px;
+
+  h1 {
+    @include loud-voice();
+  }
+}
+section.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+section.habits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+#delete-all-habits {
+  @include button-1();
+}
 .habit-list {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border: 2px solid green;
+  padding: 5px;
+  // border: 2px solid green;
+  margin-bottom: 10px;
 }
-// you cannot do put block level elements inside of an inline level element
+
 habit-card {
-  display: block; // custom-element are 'inline' by default (as of this date)
+  display: block;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10px;
-  border: 1px solid red;
+  margin: 20px;
+  box-shadow: 2px 2px 2px 2px peachpuff;
+  border-radius: 4px;
+  background: white;
+  width: 70vw;
   /* */
+  @include delete-button();
   position: relative;
-  * {
-    border: 1px solid blue;
+  // * {
+  //   border: 1px solid blue;
+  // }
+  .name {
+    @include calm-voice();
+    padding: 10px;
   }
   .checkbox {
     display: block;
     padding: 20px;
     cursor: pointer;
+  }
+  @media (min-width: 500px) {
+    width: 70%;
+    min-width: 400px;
+    max-width: 500px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 400px;
   }
 }
 
@@ -45,7 +144,24 @@ habit-card {
 }
 
 form {
-  padding: 20px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  input {
+    padding: 12px;
+    margin-right: 10px;
+    outline: none;
+    border: 1px solid #999;
+    border-radius: 4px;
+  }
+  button {
+    @include button-1();
+  }
+  button.active {
+    pointer-events: auto;
+  }
+  button.inactive {
+    pointer-events: none;
+  }
 }
 
 main {
@@ -56,4 +172,12 @@ main {
   button.active {
     display: block;
   }
+}
+
+.edit-text.inactive {
+  display: none;
+}
+
+.edit-text {
+  display: block;
 }
