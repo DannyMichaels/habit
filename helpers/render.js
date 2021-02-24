@@ -22,7 +22,7 @@ function renderHabit(habit) {
       habit.id
     }" onclick="cancelEdit('${habit.id}')">Cancel</button>
     
- 
+          <h1 class="type">${habit.type}</h1>
 
         <!-- <h1 class='date'>${habit.date}</h1>&nbsp -->
 			</habit-card>

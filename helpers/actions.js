@@ -3,14 +3,14 @@ function logState() {
   console.log("State: ", state);
 }
 
-function addHabit(formData) {
+function addHabit(habbitToAdd) {
   // $todo -> Make sure there are no duplicates?
 
-  if (!formData) {
+  if (!habbitToAdd) {
     console.log("No name added / return");
     return;
   }
-  state.habits.push(new Habit(formData));
+  state.habits.push(new Habit(habbitToAdd));
   logState();
   renderHabits();
   saveAll();
@@ -21,7 +21,7 @@ function getHabits() {
 }
 
 function getHabit(id) {
-  return getHabits(state).find(function (habit) {
+  return getHabits(state).find((habit) => {
     return habit.id == id;
   });
 }

@@ -31,12 +31,13 @@ document.addEventListener("click", (event) => {
 });
 
 const form = select('[rel="form"]');
-const input = form.querySelector("input");
+const nameInput = form.querySelector("#name");
+const typeCheckbox = form.querySelector("#type");
 const submitButton = form.querySelector("button");
 
 // function getDeleteButton() {
 //   const deleteAllButton = select('[rel="delete-all"]');
-//   if (getHabits().length > 0) {
+//   if (state.habits.length) {
 //     deleteAllButton.classList.toggle("active");
 //   } else {
 //     deleteAllButton.classList.toggle("inactive");
@@ -54,8 +55,13 @@ const submitButton = form.querySelector("button");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (input.value.length) {
-    addHabit(input.value);
+  if (nameInput.value.length) {
+    const createdHabit = {
+      name: nameInput.value,
+      type: typeCheckbox.value,
+    };
+
+    addHabit(createdHabit);
     input.value = "";
   }
 });
